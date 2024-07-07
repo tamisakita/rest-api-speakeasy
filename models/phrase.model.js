@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const PhraseSchena = mongoose.Schema(
   {
-    question: {
+    phrase: {
       type: String,
       required: [true],
     },
-    answer: {
+    translation: {
       type: String,
       required: [true],
     },
@@ -17,4 +17,6 @@ const PhraseSchena = mongoose.Schema(
   }
 );
 
-const Phrase = mongoose.model("Phrase", PhraseSchena);
+const Phrases = mongoose.model("Phrases", PhraseSchena);
+
+module.exports = Phrases;
