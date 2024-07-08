@@ -4,27 +4,24 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Phrases = require("./models/phrase.model.js");
 
-const airportPhrasesRoute = require("./routes/airportphrase.route.js");
+const phraseRoute = require("./routes/phrase.route.js");
 // framework to handle the requests
 const app = express();
 
-// middleware
+// middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use("/airport", airportPhrasesRoute);
+app.use("/phrases", phraseRoute);
 
 app.get("/", (req, res) => {
-  res.send("Hellooo GET dddd");
+  res.send("Hellooo");
 });
 
-// Connection to mongo DB and running the server on port 3000
+// Connection to mongo DB and the server setup on port 3000
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected!");
     app.listen(3000, () => {

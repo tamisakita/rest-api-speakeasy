@@ -4,12 +4,13 @@ const PhraseSchena = mongoose.Schema(
   {
     phrase: {
       type: String,
-      required: [true],
+      required: true,
     },
     translation: {
       type: String,
-      required: [true],
+      required: true,
     },
+    category: { type: String, required: true },
   },
 
   {
