@@ -2,9 +2,10 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const Phrases = require("./models/phrase.model.js");
-
 const phraseRoute = require("./routes/phrase.route.js");
+
+const PORT = process.env.PORT;
+
 // framework to handle the requests
 const app = express();
 
@@ -24,7 +25,7 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("Connected!");
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("Server is running on port3000");
     });
   })
