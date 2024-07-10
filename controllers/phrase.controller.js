@@ -2,12 +2,15 @@ const Phrases = require("../models/phrase.model");
 
 const getPhrasesByCategory = async (req, res) => {
   try {
-    const categories = ["airport", "restaurant", "grocery", "transport"];
-    const phrases = {};
+    const { category } = req.query;
 
-    for (const category of categories) {
-      phrases[category] = await Phrases.find({ category });
+    if (!category) {
+      return res
+        .status(400)
+        .json({ message: "Category parameter is required" });
     }
+
+    const phrases = await Phrases.find({ category });
     res.status(200).json(phrases);
   } catch (error) {
     res.status(500).json({ message: error.message });
