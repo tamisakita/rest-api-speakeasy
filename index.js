@@ -14,11 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use("/phrases", phraseRoute);
+app.use("/", phraseRoute);
 
-app.get("/", (req, res) => {
-  res.send("Hellooo");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hellooo");
+// });
 
 // Connection to mongo DB and the server setup on port 3000
 mongoose
