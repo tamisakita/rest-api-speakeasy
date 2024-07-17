@@ -1,5 +1,20 @@
 const Phrases = require("../models/phrase.model");
 
+const getAllPhrases = async (req, res) => {
+  try {
+    const categories = ["airport", "restaurant", "grocery", "transport"];
+    const phrases = {};
+
+    for (const category of categories) {
+      phrases[category] = await Phrases.find({ category });
+    }
+
+    res.status(200).json(phrases);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const getPhrasesByCategory = async (req, res) => {
   try {
     const { category } = req.query;
@@ -76,6 +91,7 @@ const deletePhrase = async (req, res) => {
 };
 
 module.exports = {
+  getAllPhrases,
   getPhrasesByCategory,
   getPhraseById,
   createPhrase,
