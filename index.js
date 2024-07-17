@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use("/", phraseRoute);
+app.use("/api/v1/phrases", phraseRoute);
 
 // app.get("/", (req, res) => {
 //   res.send("Hellooo");
