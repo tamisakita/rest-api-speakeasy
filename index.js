@@ -16,10 +16,6 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 app.use("/api/v1/phrases", phraseRoute);
 
-// app.get("/", (req, res) => {
-//   res.send("Hellooo");
-// });
-
 // Connection to mongo DB and the server setup on port 3000
 mongoose
   .connect(process.env.MONGODB_URI)
